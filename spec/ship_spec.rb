@@ -30,6 +30,15 @@ RSpec.describe Ship do
             expect(@cruiser.health).to eq 2
         end
 
-    end
+        it 'can sink after hits' do
+            expect(@cruiser.health).to eq 3
 
+            @cruiser.hit
+            @cruiser.hit
+            @cruiser.hit
+
+            expect(@cruiser.health).to eq 0
+            expect(@cruiser.sunk?).to be true
+        end
+    end
 end
