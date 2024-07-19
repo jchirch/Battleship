@@ -5,6 +5,7 @@ RSpec.describe Cell do
     before(:each) do 
         @cell = Cell.new("B4")
         @cruiser = Ship.new("Cruiser", 3)
+        @cell_1 = Cell.new("B4")
     end
 
     describe '#initialize' do
@@ -54,5 +55,13 @@ RSpec.describe Cell do
         end
     end
 
+    describe '#render' do
+        it 'defaults to "."' do
+            expect(@cell_1.render).to eq "."
+        end
+
+
+
+    end
 
 end
