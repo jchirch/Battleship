@@ -5,6 +5,7 @@ class Cell
         @coordinate = coordinate
         @ship = nil
         @fired_upon = false
+        @render = "."
     end
 
     def empty?
@@ -23,6 +24,18 @@ class Cell
         @fired_upon = true
         if @ship != nil
             @ship.hit
+        else
+            @render = "M"
         end
+    end
+
+    def render(my_board = false)
+        @render
+
+         if my_board == true #&& @ship != nil
+            @render = "S" 
+         else
+            @render = "."
+         end
     end
 end
