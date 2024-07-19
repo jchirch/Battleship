@@ -1,5 +1,5 @@
 class Cell
-    attr_reader :coordinate, :ship, :render
+    attr_reader :coordinate, :ship
 
     def initialize(coordinate)
         @coordinate = coordinate
@@ -29,5 +29,13 @@ class Cell
         end
     end
 
-    
+    def render(my_board = false)
+        @render
+
+         if my_board == true #&& @ship != nil
+            @render = "S" 
+         else
+            @render = "."
+         end
+    end
 end

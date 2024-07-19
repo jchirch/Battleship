@@ -3,9 +3,10 @@ require './lib/cell'
 
 RSpec.describe Cell do
     before(:each) do 
-        @cell = Cell.new("B4")
         @cruiser = Ship.new("Cruiser", 3)
+        @cell = Cell.new("B4")
         @cell_1 = Cell.new("B4")
+        @cell_2 = Cell.new("C3")
     end
 
     describe '#initialize' do
@@ -67,9 +68,11 @@ RSpec.describe Cell do
 
             expect(@cell_1.render).to eq "M"
         end
-
-
-
+      
+        it 'renders S when my board is true' do
+            @cell_2.place_ship(@cruiser)
+            expect(@cell_2.render).to eq "."
+            expect(@cell_2.render(true)).to eq "S"
+        end
     end
-
 end
