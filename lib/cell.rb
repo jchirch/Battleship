@@ -18,4 +18,8 @@ class Cell
     def fired_upon?
         @fired_upon
     end
+
+    def fire_upon
+        @fired_upon = true
+    end
 end
