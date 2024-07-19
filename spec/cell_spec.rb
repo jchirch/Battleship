@@ -16,5 +16,11 @@ RSpec.describe Cell do
         end
     end
 
+    describe '#cell status' do
+        it 'is nil by default' do
+            expect(@cell.ship).to eq nil
+        end
+    end
+
 
 end
