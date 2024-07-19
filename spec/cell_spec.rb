@@ -10,5 +10,11 @@ RSpec.describe Cell do
         it 'exists' do
             expect(@cell).to be_an_instance_of Cell
         end
+
+        it 'has an attribute' do
+            expect(@cell.coordinate).to eq "B4"
+        end
     end
+
+
 end
