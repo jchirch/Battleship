@@ -22,20 +22,22 @@ class Cell
 
     def fire_upon
         @fired_upon = true
-        if @ship != nil
+        if @ship
             @ship.hit
-        else
-            @render = "M"
         end
     end
 
-    def render(my_board = false)
-        @render
-
-         if my_board == true #&& @ship != nil
-            @render = "S" 
-         else
-            @render = "."
-         end
+    def render(player_board = false)
+        if @ship && @ship.sunk?
+            "X"
+        elsif @fired_upon && @ship
+            "H"
+        elsif @fired_upon
+            "M"
+        elsif player_board && @ship
+            "S"
+        else
+            "."
+        end
     end
 end
