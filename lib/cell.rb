@@ -28,14 +28,14 @@ class Cell
     end
 
     def render(player_board = false)
-        if @fired_upon && @ship
+        if @ship && @ship.sunk?
+            "X"
+        elsif @fired_upon && @ship
             "H"
         elsif @fired_upon
             "M"
         elsif player_board && @ship
             "S"
-        elsif @ship.sunk?
-            "X"
         else
             "."
         end
