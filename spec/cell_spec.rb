@@ -61,8 +61,10 @@ RSpec.describe Cell do
         end
 
         it 'changes render when fired upon' do
+            expect(@cell_1.render).to eq "."
+
             @cell_1.fire_upon
-            
+
             expect(@cell_1.render).to eq "M"
         end
 
