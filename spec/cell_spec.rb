@@ -74,5 +74,18 @@ RSpec.describe Cell do
             expect(@cell_2.render).to eq "."
             expect(@cell_2.render(true)).to eq "S"
         end
+
+        it 'renders X when ship is sunk' do
+            expect(@cell_2.render).to eq "."
+            
+            @cell_2.place_ship(@cruiser)
+
+            @cruiser.hit
+            @cruiser.hit
+            @cruiser.hit
+
+            expect(@cell_2.render).to eq "X"
+
+        end
     end
 end
