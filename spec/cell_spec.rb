@@ -38,6 +38,13 @@ RSpec.describe Cell do
 
             expect(@cell.fired_upon?).to be false
         end
+
+        it 'can fire upon a cell' do
+            @cell.place_ship(@cruiser)
+            @cell.fire_upon
+
+            expect(@cell.fired_upon?).to be true
+        end
     end
 
 
