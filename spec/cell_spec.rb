@@ -20,6 +20,10 @@ RSpec.describe Cell do
         it 'is nil by default' do
             expect(@cell.ship).to eq nil
         end
+
+        it 'is empty by default' do
+            expect(@cell.empty?).to be true
+        end
     end
 
 
