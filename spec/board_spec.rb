@@ -18,6 +18,10 @@ RSpec.describe Board do
         it 'has expected ammount of key value pairs' do
             expect(@board.cells.length).to eq 16
         end
+
+        it 'has keys with cell object values' do
+            expect(@board.cells["A1"]).to be_an_instance_of Cell
+        end
     end
     
     describe '#validating' do
