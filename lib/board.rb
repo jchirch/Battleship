@@ -36,10 +36,10 @@ class Board
         end
         
        if letter_coord.all?(letter_coord[0])
-        (1..4).each_cons(ship.length) { |i| valid_arrays << i }
+        (1..4).each_cons(ship.length) { |sub_array| valid_arrays << sub_array }
         valid_arrays.include?(number_coord) && coordinates.length == ship.length
        elsif number_coord.all?(number_coord[1])
-        ("A".."D").each_cons(ship.length) { |i| valid_arrays << i } 
+        ("A".."D").each_cons(ship.length) { |sub_array| valid_arrays << sub_array } 
         valid_arrays.include?(letter_coord) && coordinates.length == ship.length
        end
     end
