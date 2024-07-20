@@ -26,26 +26,29 @@ RSpec.describe Board do
         end
     end
     
-    describe '#validating' do
-        it 'reports if coordinate is valid' do
+    describe '#valid placement?' do
+        it 'returns true if coordinate is valid' do
             expect(@board.valid_coordinate?("A1")).to be true
         end
 
-        it 'reports if coordinate is invalid' do
+        it 'returns false if coordinate is invalid' do
             expect(@board.valid_coordinate?("Z9")).to be false
         end
 
-        it 'determines wrong ship size is invalid to place' do
+        it 'returns false if wrong ship size' do
             expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be false
             expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be false
         end
 
-        it 'determines correct ship size is valid to place' do
+        it 'returns true if correct ship size' do
             expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A3"])).to be true
         end
 
-        it 'determines that coordinatees are consecutive' do
+        it 'returns false if coordinates are not consecutive' do
             expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to be false
+        end
+
+        it 'returns true if coordinates are consecutive' do
             expect(@board.valid_placement?(@cruiser, ["A1", "B1", "C1"])).to be true
         end
 
