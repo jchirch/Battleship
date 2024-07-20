@@ -3,12 +3,20 @@ require './lib/cell'
 require './lib/board'
 
 RSpec.describe Board do
-
-    it 'exists' do
+    before(:each) do
         @board = Board.new
-        require 'pry'; binding.pry
-        expect(@board.cells).to be_an_instance_of Hash
     end
+    describe "#initialize" do
+        it 'exists' do
+            expect(@board.cells).to be_an_instance_of Hash
+        end
+
+        it 'is a populated hash' do
+            expect(@board.cells).not_to be_empty
+        end
+
+    end
+    
 
 
 end
