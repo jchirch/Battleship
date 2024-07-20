@@ -27,30 +27,21 @@ class Board
     end
 
     def valid_placement?(ship, coordinates)
-        x = []
-        y = []
-        z = []
+        letter_coord = []
+        number_coord = []
+        valid_arrays = []
         coordinates.each do |coordinate|
-            x << coordinate[0]
-            y << coordinate[1].to_i
+            letter_coord << coordinate[0]
+            number_coord << coordinate[1].to_i
         end
         
-       if x.all?(x[0])
-        (1..4).each_cons(ship.length) { |i| z << i }
-        z.include?(y) && coordinates.length == ship.length
-       elsif y.all?(y[1])
-        ("A".."D").each_cons(ship.length) { |i| z << i } 
-        z.include?(x) && coordinates.length == ship.length
+       if letter_coord.all?(letter_coord[0])
+        (1..4).each_cons(ship.length) { |i| valid_arrays << i }
+        valid_arrays.include?(number_coord) && coordinates.length == ship.length
+       elsif number_coord.all?(number_coord[1])
+        ("A".."D").each_cons(ship.length) { |i| valid_arrays << i } 
+        valid_arrays.include?(letter_coord) && coordinates.length == ship.length
        end
-        # (1..4).each_cons()
-        
-        # break string into coordinate pair
-        # coordinate letters must stay the same
-        # coordinate nums must be increase by 1
-        # OR
-        #coordinate letters increase by 1
-        #coordinate nums stay the same
-        #
     end
 
 
