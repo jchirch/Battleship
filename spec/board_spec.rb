@@ -5,6 +5,8 @@ require './lib/board'
 RSpec.describe Board do
     before(:each) do
         @board = Board.new
+        @cruiser = Ship.new("Cruiser", 3)
+        @submarine = Ship.new("Submarine", 2)
     end
     describe "#initialize" do
         it 'exists' do
@@ -33,6 +35,9 @@ RSpec.describe Board do
             expect(@board.valid_coordinate?("Z9")).to be false
         end
 
+        it 'determines if ship size is valid to place' do
+            expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be false
+        end
 
 
     end
