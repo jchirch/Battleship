@@ -62,5 +62,11 @@ RSpec.describe Board do
         end
     end
 
+    describe '#place ship' do
+        it 'can place ship object in multiple cells' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+        end
 
+            
+    end
 end
