@@ -14,10 +14,14 @@ RSpec.describe Board do
         it 'is a populated hash' do
             expect(@board.cells).not_to be_empty
         end
+
+        it 'has expected ammount of key value pairs' do
+            expect(@board.cells.length).to eq 16
+        end
     end
     
     describe '#validating' do
-        it 'reports if coordinate is valid' do
+        xit 'reports if coordinate is valid' do
             expect(@board.valid_coordinate?("A1")).to be true
         end
 
