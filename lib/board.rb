@@ -21,4 +21,14 @@ class Board
         "D4" => Cell.new("D4")
         }
     end
+
+    def valid_coordinate?(cell)
+        @cells.include?(cell)
+    end
+
+    def valid_placement?(ship, coordinates)
+        coordinates.length == ship.length
+    end
+
+
 end
