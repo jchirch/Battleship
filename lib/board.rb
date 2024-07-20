@@ -27,6 +27,8 @@ class Board
     end
 
     def valid_placement?(ship, coordinates)
+       return false unless available?(ship, coordinates)
+        
         letter_coord = []
         number_coord = []
         valid_arrays = []
@@ -45,11 +47,19 @@ class Board
        end
     end
 
+    def available?(ship, coordinates)
+        coordinates.each do |coordinate|
+           if cells[coordinate].empty?
+            return true
+           else
+            return false
+           end
+        end   
+    end
+
     def place(ship, coordinates)
          coordinates.each do |coordinate|
             cells[coordinate].place_ship(ship)
          end       
     end
-
-
 end
