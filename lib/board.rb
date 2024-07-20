@@ -27,22 +27,39 @@ class Board
     end
 
     def valid_placement?(ship, coordinates)
+       return false unless available?(ship, coordinates)
+        
         letter_coord = []
         number_coord = []
         valid_arrays = []
+
         coordinates.each do |coordinate|
             letter_coord << coordinate[0]
             number_coord << coordinate[1].to_i
         end
         
        if letter_coord.all?(letter_coord[0])
-        (1..4).each_cons(ship.length) { |i| valid_arrays << i }
-        valid_arrays.include?(number_coord) && coordinates.length == ship.length
+            (1..4).each_cons(ship.length) { |sub_array| valid_arrays << sub_array }
+            valid_arrays.include?(number_coord) && coordinates.length == ship.length
        elsif number_coord.all?(number_coord[1])
-        ("A".."D").each_cons(ship.length) { |i| valid_arrays << i } 
-        valid_arrays.include?(letter_coord) && coordinates.length == ship.length
+            ("A".."D").each_cons(ship.length) { |sub_array| valid_arrays << sub_array } 
+            valid_arrays.include?(letter_coord) && coordinates.length == ship.length
        end
     end
 
+    def available?(ship, coordinates)
+        coordinates.each do |coordinate|
+           if cells[coordinate].empty?
+            return true
+           else
+            return false
+           end
+        end   
+    end
 
+    def place(ship, coordinates)
+         coordinates.each do |coordinate|
+            cells[coordinate].place_ship(ship)
+         end       
+    end
 end
