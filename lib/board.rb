@@ -30,7 +30,7 @@ class Board
         letter_coord = []
         number_coord = []
         valid_arrays = []
-        
+
         coordinates.each do |coordinate|
             letter_coord << coordinate[0]
             number_coord << coordinate[1].to_i
@@ -46,7 +46,9 @@ class Board
     end
 
     def place(ship, coordinates)
-
+         coordinates.each do |coordinate|
+            cells[coordinate].place_ship(ship)
+         end       
     end
 
 
