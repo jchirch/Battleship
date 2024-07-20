@@ -56,6 +56,10 @@ RSpec.describe Board do
             expect(@board.valid_placement?(@cruiser, ["C1", "B1", "A1"])).to be false
         end
 
+        it 'returns true if all conditions are met' do
+            expect(@board.valid_placement?(@submarine, ["A1", "A2"])). to be true
+            expect(@board.valid_placement?(@submarine, ["A1", "A2"])). to be true
+        end
     end
 
 
