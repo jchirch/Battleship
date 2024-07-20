@@ -14,9 +14,16 @@ RSpec.describe Board do
         it 'is a populated hash' do
             expect(@board.cells).not_to be_empty
         end
-
     end
     
+    describe '#validating' do
+        it 'reports if coordinate is valid' do
+            expect(@board.valid_coordinate?("A1")).to be true
+        end
+
+
+
+    end
 
 
 end
