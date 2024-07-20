@@ -52,6 +52,9 @@ RSpec.describe Board do
             expect(@board.valid_placement?(@cruiser, ["A1", "B1", "C1"])).to be true
         end
 
+        it 'returns false if coordinates decrease in value' do
+            expect(@board.valid_placement?(@cruiser, ["C1", "B1", "A1"])).to be false
+        end
 
     end
 
