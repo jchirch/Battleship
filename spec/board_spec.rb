@@ -25,8 +25,12 @@ RSpec.describe Board do
     end
     
     describe '#validating' do
-        xit 'reports if coordinate is valid' do
+        it 'reports if coordinate is valid' do
             expect(@board.valid_coordinate?("A1")).to be true
+        end
+
+        it 'reports if coordinate is invalid' do
+            expect(@board.valid_coordinate?("Z9")).to be false
         end
 
 

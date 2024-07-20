@@ -22,5 +22,9 @@ class Board
         }
     end
 
-    
+    def valid_coordinate?(cell)
+        @cells.include?(cell)
+    end
+
+
 end
