@@ -40,12 +40,13 @@ RSpec.describe Board do
             expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be false
         end
 
-        it 'determines correct ship siza is valid to place' do
+        it 'determines correct ship size is valid to place' do
             expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A3"])).to be true
         end
 
         it 'determines that coordinatees are consecutive' do
             expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to be false
+            expect(@board.valid_placement?(@cruiser, ["A1", "B1", "C1"])).to be true
         end
 
 
