@@ -44,6 +44,10 @@ RSpec.describe Board do
             expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A3"])).to be true
         end
 
+        it 'determines that coordinatees are consecutive' do
+            expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to be false
+        end
+
 
     end
 
