@@ -26,5 +26,10 @@ class Board
         @cells.include?(cell)
     end
 
+    def valid_placement?(ship, coordinates)
+        #  require 'pry'; binding.pry
+       coordinates.length == ship.length
+    end
+
 
 end

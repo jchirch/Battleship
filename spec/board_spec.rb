@@ -35,9 +35,12 @@ RSpec.describe Board do
             expect(@board.valid_coordinate?("Z9")).to be false
         end
 
-        it 'determines if ship size is valid to place' do
+        it 'determines wrong ship size is invalid to place' do
             expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be false
+            expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be false
         end
+
+        
 
 
     end
