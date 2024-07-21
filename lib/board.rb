@@ -64,19 +64,20 @@ class Board
     end
 
     def render(player_board = false)
-        # require 'pry'; binding.pry
-        board  = "  1 2 3 4 \n" +
+
+        if player_board == false
+            board  = "  1 2 3 4 \n" +
                  "A #{@cells["A1"].render} #{@cells["A2"].render} #{@cells["A3"].render} #{@cells["A4"].render}\n" +
-                 "B . . . . \n" +
-                 "C . . . . \n" +
-                 "D . . . . \n"
-        
+                 "B #{@cells["B1"].render} #{@cells["B2"].render} #{@cells["B3"].render} #{@cells["B4"].render}\n" +
+                 "C #{@cells["C1"].render} #{@cells["C2"].render} #{@cells["C3"].render} #{@cells["C4"].render}\n" +
+                 "D #{@cells["D1"].render} #{@cells["D2"].render} #{@cells["D3"].render} #{@cells["D4"].render}\n"
+        else
+            board  = "  1 2 3 4 \n" +
+                 "A #{@cells["A1"].render(true)} #{@cells["A2"].render(true)} #{@cells["A3"].render(true)} #{@cells["A4"].render(true)}\n" +
+                 "B #{@cells["B1"].render(true)} #{@cells["B2"].render(true)} #{@cells["B3"].render(true)} #{@cells["B4"].render(true)}\n" +
+                 "C #{@cells["C1"].render(true)} #{@cells["C2"].render(true)} #{@cells["C3"].render(true)} #{@cells["C4"].render(true)}\n" +
+                 "D #{@cells["D1"].render(true)} #{@cells["D2"].render(true)} #{@cells["D3"].render(true)} #{@cells["D4"].render(true)}\n"
+        end
         p board
-        # render a board that is a string
-        # the first line represents an empty space and the number 1-4
-        # each following starts with a letter
-        # and then has four spaces that should be renderings of cell objects
-        # 
-        # 
     end
 end
