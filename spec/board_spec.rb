@@ -84,4 +84,46 @@ RSpec.describe Board do
             expect(@cell_1.ship).to eq @cell_3.ship
         end    
     end
+
+    describe '#render' do
+        it 'can render a board that is a string' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+
+            expect(@board.render).to be_an_instance_of String
+        end
+
+        it 'can show ships if player board is true' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+
+            expect(@board.cells["A1"].render(true)).to eq "S"
+        end
+
+        it 'returns H if ship is hit' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+            @board.cells["A1"].fire_upon
+            
+            expect(@board.cells["A1"].render).to eq "H"
+        end
+
+        it 'returns X if ship is sunk' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+            @board.cells["A1"].fire_upon
+            @board.cells["A2"].fire_upon
+            @board.cells["A3"].fire_upon
+            
+            expect(@board.cells["A1"].render).to eq "X"
+            expect(@board.cells["A2"].render).to eq "X"
+            expect(@board.cells["A3"].render).to eq "X"
+
+            expect(@cruiser.sunk?).to be true
+        end
+
+        it 'returns M if fired upon misses' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+            @board.cells["B1"].fire_upon
+            
+            expect(@board.cells["B1"].render).to eq "M"
+        end
+        # puts @board.render(true)
+    end
 end
