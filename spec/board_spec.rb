@@ -84,4 +84,12 @@ RSpec.describe Board do
             expect(@cell_1.ship).to eq @cell_3.ship
         end    
     end
+
+    describe '#render' do
+        it 'can render a board that is a string' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+
+            expect(@board.render).to be_an_instance_of String
+        end
+    end
 end
