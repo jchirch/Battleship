@@ -117,6 +117,13 @@ RSpec.describe Board do
 
             expect(@cruiser.sunk?).to be true
         end
+
+        it 'returns M if fired upon misses' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+            @board.cells["B1"].fire_upon
+            
+            expect(@board.cells["B1"].render).to eq "M"
+        end
         # puts @board.render(true)
     end
 end
