@@ -97,5 +97,13 @@ RSpec.describe Board do
 
             expect(@board.cells["A1"].render(true)).to eq "S"
         end
+
+        it 'returns H if ship is hit' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+            @board.cells["A1"].fire_upon
+            
+            expect(@board.cells["A1"].render).to eq "H"
+            # puts @board.render(true)
+        end
     end
 end
