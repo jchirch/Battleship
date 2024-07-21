@@ -62,4 +62,21 @@ class Board
             cells[coordinate].place_ship(ship)
          end       
     end
+
+    def render(player_board = false)
+        # require 'pry'; binding.pry
+        board  = "  1 2 3 4 \n" +
+                 "A #{@cells["A1"].render} #{@cells["A2"].render} #{@cells["A3"].render} #{@cells["A4"].render}\n" +
+                 "B . . . . \n" +
+                 "C . . . . \n" +
+                 "D . . . . \n"
+        
+        p board
+        # render a board that is a string
+        # the first line represents an empty space and the number 1-4
+        # each following starts with a letter
+        # and then has four spaces that should be renderings of cell objects
+        # 
+        # 
+    end
 end
