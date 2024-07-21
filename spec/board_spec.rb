@@ -103,7 +103,20 @@ RSpec.describe Board do
             @board.cells["A1"].fire_upon
             
             expect(@board.cells["A1"].render).to eq "H"
-            # puts @board.render(true)
         end
+
+        it 'returns X if ship is sunk' do
+            @board.place(@cruiser, ["A1", "A2", "A3"])
+            @board.cells["A1"].fire_upon
+            @board.cells["A2"].fire_upon
+            @board.cells["A3"].fire_upon
+            
+            expect(@board.cells["A1"].render).to eq "X"
+            expect(@board.cells["A2"].render).to eq "X"
+            expect(@board.cells["A3"].render).to eq "X"
+
+            expect(@cruiser.sunk?).to be true
+        end
+        # puts @board.render(true)
     end
 end
