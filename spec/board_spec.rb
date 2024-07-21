@@ -124,6 +124,5 @@ RSpec.describe Board do
             
             expect(@board.cells["B1"].render).to eq "M"
         end
-        # puts @board.render(true)
     end
 end
