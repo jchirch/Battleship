@@ -12,7 +12,6 @@ def start
     puts "Welcome to BATTLESHIP \n" +
     "Enter p to play. Enter q to quit."
     unless gets.chomp == "q"
-    
 
     @computer_board.place(@cruiser, ["A1", "A2", "A3"])
     @computer_board.place(@submarine, ["B1", "C1"])
@@ -43,10 +42,7 @@ def start
     puts @computer_board.render(true)
     puts @player_board.render(true)
 
-
-
-
     end
 end
 
-start
+# start
