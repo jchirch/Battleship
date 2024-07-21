@@ -32,7 +32,16 @@ def start
     "\n" +
     "Enter the squares for the Cruiser (3 spaces):"
 
+    @user_response_1 = gets.chomp
+    
+    if @player_board.valid_placement?(@cruiser, @user_response_1.split)
+        @player_board.place(@cruiser, @user_response_1.split)
+    else
+        puts "Ye can't park here! Try again, scallywag!"
+    end
+
     puts @computer_board.render(true)
+    puts @player_board.render(true)
 
 
 
