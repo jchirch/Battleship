@@ -48,12 +48,8 @@ class Board
     end
 
     def available?(ship, coordinates)
-        coordinates.each do |coordinate|
-           if cells[coordinate].empty?
-            return true
-           else
-            return false
-           end
+        coordinates.all? do |coordinate|
+            cells[coordinate].empty?
         end   
     end
 
