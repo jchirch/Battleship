@@ -17,5 +17,3 @@ end
 #
 # do we need turn class or does getschomp break up script?
 # How to break up valid placement? into helpeer methods
-#
-# def availible, look into .all? .any?
