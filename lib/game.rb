@@ -134,4 +134,11 @@ class Game
         "==============PLAYER BOARD============== \n" +
         "#{@player_board.render(true)}"
     end
+
+    def game_play
+        until all_ships_sunk?(player) || all_ships_sunk(computer)
+            player_turn
+            computer_turn
+        end
+    end
 end
