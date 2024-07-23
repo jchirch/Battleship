@@ -13,7 +13,7 @@ class Game
         play_or_quit
         game_prompt
         player_ships
-        
+        game_play
     end
 
     def welcome
@@ -136,9 +136,24 @@ class Game
     end
 
     def game_play
-        until all_ships_sunk?(player) || all_ships_sunk(computer)
-            player_turn
-            computer_turn
+        player_turn
+        # until all_ships_sunk?(player) || all_ships_sunk(computer)
+        #     player_turn
+        #     computer_turn
+        # end
+    end
+
+    def player_turn
+        puts "Enter the coordinate for ye cannonball:"
+        input = gets.chomp.to_s
+        if @computer_board.valid_coordinate?(input)
+            @computer_board.cells[input].fire_upon
         end
+    end
+
+    def computer_turn
+    end
+
+    def all_ships_sunk
     end
 end
