@@ -26,8 +26,16 @@ class Board
         @cells.include?(cell)
     end
 
+    def validate_coordinates(coordinates)
+        coordinate_result = coordinates.all? do |coordinate|
+            valid_coordinate?(coordinate)
+           return false unless coordinate_result == true 
+        end
+    end
+
     def valid_placement?(ship, coordinates)
        return false unless available?(ship, coordinates)
+       validate_coordinates(coordinates)
         
         letter_coord = []
         number_coord = []
@@ -45,6 +53,8 @@ class Board
             ("A".."D").each_cons(ship.length) { |sub_array| valid_arrays << sub_array } 
             valid_arrays.include?(letter_coord) && coordinates.length == ship.length
        end
+       
+
     end
 
     def available?(ship, coordinates)

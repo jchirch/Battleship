@@ -12,6 +12,8 @@ class Game
         welcome
         play_or_quit
         game_prompt
+        player_cruiser
+       
     end
 
     def welcome
@@ -52,15 +54,22 @@ class Game
         "Enter the squares for ye Cruiser (3 spaces):"
     end
 
+    def player_cruiser
+        input = gets.chomp
+        if @player_board.valid_placement?(@cruiser, input.split)
+            @player_board.place(@cruiser, input.split)
+            puts @player_board.render(true)
+        else
+            puts "Ye can't park here! Try again, scallywag!"
+            player_cruiser
+        end
+    end
+
 
 
 
     # def old_start
-      
-        
-    
-    
-    #     
+     
     
     #     @user_response_1 = gets.chomp
         
