@@ -130,9 +130,9 @@ class Game
 
     def boards_render
         puts "=============COMPUTER BOARD============= \n" +
-        "#{@computer_board.render}" +
-        "==============PLAYER BOARD============== \n" +
-        "#{@player_board.render(true)}"
+            "#{@computer_board.render}" +
+            "==============PLAYER BOARD============== \n" +
+            "#{@player_board.render(true)}"
     end
 
     def game_play
@@ -158,14 +158,21 @@ class Game
     def player_hit_or_miss(input)
         if @computer_board.cells[input].ship
             puts "\nYour shot on #{input} was a hit."
+            if @computer_board.cells[input].ship.sunk?
+                puts "You sunk my #{@computer_board.cells[input].ship.name}!"
+            end
         else
             puts "\nYour shot on #{input} was a miss."
         end
     end
 
     def computer_hit_or_miss(computer_input)
+        require 'pry'; binding.pry
         if @player_board.cells[computer_input].ship
             puts "My shot on #{computer_input} was a hit.\n"
+            if @player_board.cells[computer_input].ship.sunk?
+                puts "I sunk your #{@player_board.cells[computer_input].ship.name}!"
+            end
         else
             puts "My shot on #{computer_input} was a miss.\n"
         end
