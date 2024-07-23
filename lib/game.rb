@@ -159,7 +159,7 @@ class Game
     end
 
     def player_hit_or_miss(input)
-        if @computer_board.cells[input].fired_upon?
+        if @computer_board.cells[input].ship
             puts "Your shot on #{input} was a hit."
         else
             puts "Your shot on #{input} was a miss."
@@ -167,7 +167,7 @@ class Game
     end
 
     def computer_hit_or_miss(computer_input)
-        if @player_board.cells[computer_input].fired_upon?
+        if @player_board.cells[computer_input].ship
             puts "My shot on #{computer_input} was a hit."
         else
             puts "My shot on #{computer_input} was a miss."
