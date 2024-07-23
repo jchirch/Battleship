@@ -12,9 +12,8 @@ class Game
         welcome
         play_or_quit
         game_prompt
-        player_cruiser
-        player_submarine
-        player_rubber_duckie
+        player_ships
+        
     end
 
     def welcome
@@ -39,8 +38,6 @@ class Game
         computer_cruiser
         computer_submarine
         computer_duckie
-
-        puts @computer_board.render(true)
     end
 
     def all_coordinates
@@ -48,7 +45,7 @@ class Game
     end
 
     def computer_cruiser
-         computer_input = all_coordiantes.sample(3)
+        computer_input = all_coordinates.sample(3)
         if @computer_board.valid_placement?(@cruiser, computer_input)
             @computer_board.place(@cruiser, computer_input)
         else
@@ -57,7 +54,7 @@ class Game
     end
 
     def computer_submarine
-        computer_input = all_coordiantes.sample(2)
+        computer_input = all_coordinates.sample(2)
         if @computer_board.valid_placement?(@submarine, computer_input)
             @computer_board.place(@submarine, computer_input)
         else
@@ -66,7 +63,7 @@ class Game
     end
 
     def computer_duckie
-        computer_input = all_coordiantes.sample(1)
+        computer_input = all_coordinates.sample(1)
         if @computer_board.valid_placement?(@rubber_duckie, computer_input)
             @computer_board.place(@rubber_duckie, computer_input)
         else
@@ -85,6 +82,12 @@ class Game
         
         "\n" +
         "Enter the squares for ye Cruiser (3 spaces):"
+    end
+
+    def player_ships
+        player_cruiser
+        player_submarine
+        player_rubber_duckie
     end
 
     def player_cruiser
@@ -115,12 +118,20 @@ class Game
         input = gets.chomp
         if @player_board.valid_placement?(@rubber_duckie, input.split)
             @player_board.place(@rubber_duckie, input.split)
-            puts @player_board.render(true)
         else
             puts "Ye can't park here! Try again, scallywag!"
             player_rubber_duckie
         end
     end
 
+    def turn
+        boards_render
+    end
 
+    def boards_render
+        puts "=============COMPUTER BOARD============= \n" +
+        "#{@computer_board.render}" +
+        "==============PLAYER BOARD============== \n" +
+        "#{@player_board.render(true)}"
+    end
 end
