@@ -13,7 +13,8 @@ class Game
         play_or_quit
         game_prompt
         player_cruiser
-       
+        player_submarine
+        player_rubber_duckie
     end
 
     def welcome
@@ -65,25 +66,29 @@ class Game
         end
     end
 
+    def player_submarine
+        puts "Enter the squares for ye Submarine (2 spaces):"
+        input = gets.chomp
+        if @player_board.valid_placement?(@submarine, input.split)
+            @player_board.place(@submarine, input.split)
+            puts @player_board.render(true)
+        else
+            puts "Ye can't park here! Try again, scallywag!"
+            player_submarine
+        end
+    end
 
+    def player_rubber_duckie
+        puts "Enter the squares for ye rubber duckie (1 space):"
+        input = gets.chomp
+        if @player_board.valid_placement?(@rubber_duckie, input.split)
+            @player_board.place(@rubber_duckie, input.split)
+            puts @player_board.render(true)
+        else
+            puts "Ye can't park here! Try again, scallywag!"
+            player_rubber_duckie
+        end
+    end
 
-
-    # def old_start
-     
-    
-    #     @user_response_1 = gets.chomp
-        
-    #     if @player_board.valid_placement?(@cruiser, @user_response_1.split)
-    #         @player_board.place(@cruiser, @user_response_1.split)
-    #     else
-    #         puts "Ye can't park here! Try again, scallywag!"
-    #     end
-    
-    #     puts @computer_board.render(true)
-    #     puts @player_board.render(true)
-    
-    #     end
-    # end
-    
 
 end

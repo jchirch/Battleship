@@ -52,8 +52,6 @@ class Board
             ("A".."D").each_cons(ship.length) { |sub_array| valid_arrays << sub_array } 
             valid_arrays.include?(letter_coord) && coordinates.length == ship.length
        end
-       
-
     end
 
     def available?(ship, coordinates)
