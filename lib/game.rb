@@ -15,6 +15,7 @@ class Game
         player_cruiser
         player_submarine
         player_rubber_duckie
+        computer_cruiser
     end
 
     def welcome
@@ -36,12 +37,20 @@ class Game
     end
 
     def computer_placement
-        @computer_board.place(@cruiser, ["A1", "A2", "A3"])
-        @computer_board.place(@submarine, ["B1", "C1"])
-        @computer_board.place(@rubber_duckie, ["D4"])
+        computer_cruiser
+        
     end
-#randomize later!
 
+    def computer_cruiser
+        all_coordiantes = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
+        computer_input = all_coordiantes.sample(3)
+        if @computer_board.valid_placement?(@cruiser, computer_input)
+            @computer_board.place(@cruiser, computer_input)
+        else
+            computer_cruiser
+        end
+    end
+   
     def game_prompt
         puts "Ahoy Scallywag! I have laid out me fleet on the grid.\n" +
         "Ye now need to lay out yer 3 ships.\n" +
