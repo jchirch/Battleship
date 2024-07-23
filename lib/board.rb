@@ -27,15 +27,15 @@ class Board
     end
 
     def validate_coordinates(coordinates)
-        coordinate_result = coordinates.all? do |coordinate|
+        coordinates.all? do |coordinate|
             valid_coordinate?(coordinate)
-           return false unless coordinate_result == true 
         end
     end
 
     def valid_placement?(ship, coordinates)
-       return false unless available?(ship, coordinates)
-       validate_coordinates(coordinates)
+        validate_coordinates(coordinates)
+        return false unless available?(ship, coordinates)
+       
         
         letter_coord = []
         number_coord = []
