@@ -151,16 +151,34 @@ class Game
         input = gets.chomp.to_s
         if @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon?
             @computer_board.cells[input].fire_upon
+            player_hit_or_miss(input)
         else
             "Please enter a valid coordinate"
             player_turn
         end
     end
 
+    def player_hit_or_miss(input)
+        if @computer_board.cells[input].fired_upon?
+            puts "Your shot on #{input} was a hit."
+        else
+            puts "Your shot on #{input} was a miss."
+        end
+    end
+
+    def computer_hit_or_miss(computer_input)
+        if @player_board.cells[computer_input].fired_upon?
+            puts "My shot on #{computer_input} was a hit."
+        else
+            puts "My shot on #{computer_input} was a miss."
+        end
+    end    
+
     def computer_turn
         computer_input = all_coordinates.sample
         if !@player_board.cells[computer_input].fired_upon?
             @player_board.cells[computer_input].fire_upon
+            computer_hit_or_miss(computer_input)
         else
             computer_turn
         end
