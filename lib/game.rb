@@ -137,6 +137,7 @@ class Game
 
     def game_play
         player_turn
+        computer_turn
         # until all_ships_sunk?(player) || all_ships_sunk(computer)
         #     player_turn
         #     computer_turn
@@ -146,13 +147,21 @@ class Game
     def player_turn
         puts "Enter the coordinate for ye cannonball:"
         input = gets.chomp.to_s
-        if @computer_board.valid_coordinate?(input)
+        if @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon
             @computer_board.cells[input].fire_upon
+        else
+            "Please enter a valid coordinate"
+            player_turn
         end
     end
 
     def computer_turn
-    end
+        computer_input = all_coordinates.sample
+        if !@player_board.cells[computer_input].fired_upon
+            @player_board.cells[computer_input].fire_upon
+        else
+            computer_turn
+        end
 
     def all_ships_sunk
     end
