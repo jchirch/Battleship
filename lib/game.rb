@@ -16,6 +16,7 @@ class Game
         play_or_quit
         game_prompt
         player_ships
+        boards_render
         game_play
     end
 
@@ -75,7 +76,7 @@ class Game
     end
    
     def game_prompt
-        puts "Ahoy Scallywag! I have laid out me fleet on the grid.\n" +
+        puts "\n Ahoy Scallywag! I have laid out me fleet on the grid.\n" +
         "Ye now need to lay out yer 3 ships.\n" +
         "The Cruiser be three units long, the Submarine be two units long,\n" +
         "and the rubber duckie be only one unit.\n" +
@@ -105,31 +106,27 @@ class Game
     end
 
     def player_submarine
-        puts "Enter the squares for ye Submarine (2 spaces):"
+        puts "\nEnter the squares for ye Submarine (2 spaces):"
         input = gets.chomp
         if @player_board.valid_placement?(@player_submarine, input.split)
             @player_board.place(@player_submarine, input.split)
-            puts @player_board.render(true)
+            puts @player_board.render(true) 
         else
-            puts "Ye can't park here! Try again, scallywag!"
+            puts "\nYe can't park here! Try again, scallywag!"
             player_submarine
         end
     end
 
     def player_rubber_duckie
-        puts "Enter the squares for ye rubber duckie (1 space):"
+        puts "\nEnter the squares for ye rubber duckie (1 space):"
         input = gets.chomp
         if @player_board.valid_placement?(@player_rubber_duckie, input.split)
             @player_board.place(@player_rubber_duckie, input.split)
         else
-            puts "Ye can't park here! Try again, scallywag!"
+            puts "\nYe can't park here! Try again, scallywag!"
             player_rubber_duckie
         end
     end
-
-    # def turn
-    #     boards_render
-    # end
 
     def boards_render
         puts "=============COMPUTER BOARD============= \n" +
@@ -147,30 +144,30 @@ class Game
     end
 
     def player_turn
-        puts "Enter the coordinate for ye cannonball:"
+        puts "\nEnter the coordinate for ye cannonball: \n"
         input = gets.chomp.to_s
         if @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon?
             @computer_board.cells[input].fire_upon
             player_hit_or_miss(input)
         else
-            "Please enter a valid coordinate"
+            "\nPlease enter a valid coordinate \n"
             player_turn
         end
     end
 
     def player_hit_or_miss(input)
         if @computer_board.cells[input].ship
-            puts "Your shot on #{input} was a hit."
+            puts "\nYour shot on #{input} was a hit."
         else
-            puts "Your shot on #{input} was a miss."
+            puts "\nYour shot on #{input} was a miss."
         end
     end
 
     def computer_hit_or_miss(computer_input)
         if @player_board.cells[computer_input].ship
-            puts "My shot on #{computer_input} was a hit."
+            puts "My shot on #{computer_input} was a hit.\n"
         else
-            puts "My shot on #{computer_input} was a miss."
+            puts "My shot on #{computer_input} was a miss.\n"
         end
     end    
 
