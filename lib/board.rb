@@ -33,10 +33,9 @@ class Board
     end
 
     def valid_placement?(ship, coordinates)
-        validate_coordinates(coordinates)
+        return false unless validate_coordinates(coordinates)
         return false unless available?(ship, coordinates)
        
-        
         letter_coord = []
         number_coord = []
         valid_arrays = []
