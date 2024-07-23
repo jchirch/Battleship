@@ -71,6 +71,14 @@ RSpec.describe Board do
 
             expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be false
         end
+
+        it 'returns false if coordinates are invalid' do
+            expect(@board.validate_coordinates(["A1", "A2", "E4"])).to be false
+        end
+
+        it 'returns false if coordinates are invalid' do
+            expect(@board.validate_coordinates(["A1", "A2", "A3"])).to be true 
+        end
     end
 
     describe '#place ship' do

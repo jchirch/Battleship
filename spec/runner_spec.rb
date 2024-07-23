@@ -7,10 +7,13 @@ RSpec.describe 'runner' do
 
 end
 
-#set up rspec
+#set up rspec - little code in runner, make new class.
+# decouple certain return values?
+#make a game class to handle game logic
+#
 #randomize computer placement
-#is the rubber duckie cool?
+# have computer randomly choose coordinates until sometjhing sticks
+#give num range and letter range
+#
 # do we need turn class or does getschomp break up script?
-#
-#
-#
+# How to break up valid placement? into helpeer methods

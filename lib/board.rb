@@ -26,9 +26,16 @@ class Board
         @cells.include?(cell)
     end
 
+    def validate_coordinates(coordinates)
+        coordinates.all? do |coordinate|
+            valid_coordinate?(coordinate)
+        end
+    end
+
     def valid_placement?(ship, coordinates)
-       return false unless available?(ship, coordinates)
-        
+        return false unless validate_coordinates(coordinates)
+        return false unless available?(ship, coordinates)
+       
         letter_coord = []
         number_coord = []
         valid_arrays = []
@@ -48,12 +55,8 @@ class Board
     end
 
     def available?(ship, coordinates)
-        coordinates.each do |coordinate|
-           if cells[coordinate].empty?
-            return true
-           else
-            return false
-           end
+        coordinates.all? do |coordinate|
+            cells[coordinate].empty?
         end   
     end
 
