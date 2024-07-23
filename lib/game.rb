@@ -15,7 +15,6 @@ class Game
         player_cruiser
         player_submarine
         player_rubber_duckie
-        computer_cruiser
     end
 
     def welcome
@@ -38,16 +37,40 @@ class Game
 
     def computer_placement
         computer_cruiser
-        
+        computer_submarine
+        computer_duckie
+
+        puts @computer_board.render(true)
+    end
+
+    def all_coordinates
+        ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
     end
 
     def computer_cruiser
-        all_coordiantes = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
-        computer_input = all_coordiantes.sample(3)
+         computer_input = all_coordiantes.sample(3)
         if @computer_board.valid_placement?(@cruiser, computer_input)
             @computer_board.place(@cruiser, computer_input)
         else
             computer_cruiser
+        end
+    end
+
+    def computer_submarine
+        computer_input = all_coordiantes.sample(2)
+        if @computer_board.valid_placement?(@submarine, computer_input)
+            @computer_board.place(@submarine, computer_input)
+        else
+            computer_submarine
+        end
+    end
+
+    def computer_duckie
+        computer_input = all_coordiantes.sample(1)
+        if @computer_board.valid_placement?(@rubber_duckie, computer_input)
+            @computer_board.place(@rubber_duckie, computer_input)
+        else
+            computer_duckie
         end
     end
    
