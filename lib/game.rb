@@ -11,7 +11,7 @@ class Game
     def start
         welcome
         play_or_quit
-        # computer_placement
+        game_prompt
     end
 
     def welcome
@@ -36,27 +36,31 @@ class Game
         @computer_board.place(@cruiser, ["A1", "A2", "A3"])
         @computer_board.place(@submarine, ["B1", "C1"])
         @computer_board.place(@rubber_duckie, ["D4"])
-        puts @computer_board.render(true) 
     end
 #randomize later!
+
+    def game_prompt
+        puts "Ahoy Scallywag! I have laid out me fleet on the grid.\n" +
+        "Ye now need to lay out yer 3 ships.\n" +
+        "The Cruiser be three units long, the Submarine be two units long,\n" +
+        "and the rubber duckie be only one unit.\n" +
+        "\n" 
+
+        puts @player_board.render(true) +
+        
+        "\n" +
+        "Enter the squares for ye Cruiser (3 spaces):"
+    end
+
+
+
 
     # def old_start
       
         
     
     
-    #     puts "Ahoy Scallywag! I have laid out me fleet on the grid.\n" +
-    #     "Ye now need to lay out yer 3 ships.\n" +
-    #     "The Cruiser be three units long, the Submarine be two units long,\n" +
-    #     "and the rubber duckie be only one unit.\n" +
-    #     "\n" +
-    #     "  1 2 3 4\n" +
-    #     "A . . . .\n" +
-    #     "B . . . .\n" +
-    #     "C . . . .\n" +
-    #     "D . . . .\n" +
-    #     "\n" +
-    #     "Enter the squares for the Cruiser (3 spaces):"
+    #     
     
     #     @user_response_1 = gets.chomp
         
