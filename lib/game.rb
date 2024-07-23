@@ -1,8 +1,17 @@
 class Game
 
+    def initialize
+        @player_board = Board.new
+        @computer_board = Board.new
+        @cruiser = Ship.new("Cruiser", 3)
+        @submarine = Ship.new("Submarine", 2)
+        @rubber_duckie = Ship.new("Duckie", 1)
+    end
+
     def start
         welcome
         play_or_quit
+        # computer_placement
     end
 
     def welcome
@@ -11,17 +20,29 @@ class Game
     end
 
     def play_or_quit
-        unless gets.chomp == "q"
+        input = gets.chomp
+        
+        if input == "p"
+            computer_placement
+        elsif input == "q"
+            exit
+        else
+            puts "Invalid input, enter 'p' or 'q'"
+            play_or_quit
         end
     end
 
-
+    def computer_placement
+        @computer_board.place(@cruiser, ["A1", "A2", "A3"])
+        @computer_board.place(@submarine, ["B1", "C1"])
+        @computer_board.place(@rubber_duckie, ["D4"])
+        puts @computer_board.render(true) 
+    end
+#randomize later!
 
     # def old_start
       
-        # @computer_board.place(@cruiser, ["A1", "A2", "A3"])
-        # @computer_board.place(@submarine, ["B1", "C1"])
-        # @computer_board.place(@rubber_duckie, ["D4"])
+        
     
     
     #     puts "Ahoy Scallywag! I have laid out me fleet on the grid.\n" +
