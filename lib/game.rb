@@ -76,8 +76,8 @@ class Game
     end
    
     def game_prompt
-        puts "\n Ahoy Scallywag! I have laid out me fleet on the grid.\n" +
-        "Ye now need to lay out yer 3 ships.\n" +
+        puts "\nAhoy Scallywag! I have laid out me fleet on the grid.\n\n" +
+        "Ye now need to lay out yer 3 ships.\n\n" +
         "The Cruiser be three units long, the Submarine be two units long,\n" +
         "and the rubber duckie be only one unit.\n" +
         "\n" 
@@ -167,7 +167,6 @@ class Game
     end
 
     def computer_hit_or_miss(computer_input)
-        require 'pry'; binding.pry
         if @player_board.cells[computer_input].ship
             puts "My shot on #{computer_input} was a hit.\n"
             if @player_board.cells[computer_input].ship.sunk?
