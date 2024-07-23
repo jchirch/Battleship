@@ -21,8 +21,8 @@ class Game
     end
 
     def welcome
-        puts "Welcome to BATTLESHIP \n" +
-        "Enter p to play. Enter q to quit."
+        puts "\n\nWelcome to BATTLESHIP\n" +
+        "Enter p to play. Enter q to quit.\n"
     end
 
     def play_or_quit
