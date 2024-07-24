@@ -18,6 +18,8 @@ class Game
         player_ships
         boards_render
         game_play
+        winner
+        welcome
     end
 
     def welcome
@@ -143,13 +145,21 @@ class Game
         end
     end
 
+    def winner
+        if all_ships_sunk?(@player_board)
+            puts "\nI won!!"
+        else
+            puts "\nYou won :( "
+        end
+    end
+
     def player_turn
         puts "\nEnter the coordinate for ye cannonball: \n"
         input = gets.chomp.to_s
         if @computer_board.cells[input].fired_upon?
             puts "Adjust your eyepatch!!\n" +
             "You already shot there scallyway!"
-            player_turn
+            player
         elsif @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon?
             @computer_board.cells[input].fire_upon
             player_hit_or_miss(input)
