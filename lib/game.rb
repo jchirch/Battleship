@@ -163,7 +163,7 @@ class Game
         if @computer_board.cells[input].fired_upon?
             puts "Adjust your eyepatch!!\n" +
             "You already shot there, scallyway!"
-            player
+            player_turn
         elsif @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon?
             @computer_board.cells[input].fire_upon
             player_hit_or_miss(input)
