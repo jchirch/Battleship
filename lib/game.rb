@@ -99,7 +99,7 @@ class Game
     end
 
     def player_cruiser
-        input = gets.chomp
+        input = gets.chomp.upcase.delete(",")
         if @player_board.valid_placement?(@player_cruiser, input.split)
             @player_board.place(@player_cruiser, input.split)
             puts @player_board.render(true)
@@ -111,7 +111,7 @@ class Game
 
     def player_submarine
         puts "\nEnter the squares for ye Submarine (2 spaces):"
-        input = gets.chomp
+        input = gets.chomp.upcase.delete(",")
         if @player_board.valid_placement?(@player_submarine, input.split)
             @player_board.place(@player_submarine, input.split)
             puts @player_board.render(true) 
@@ -123,7 +123,7 @@ class Game
 
     def player_rubber_duckie
         puts "\nEnter the squares for ye rubber duckie (1 space):"
-        input = gets.chomp
+        input = gets.chomp.upcase.delete(",")
         if @player_board.valid_placement?(@player_rubber_duckie, input.split)
             @player_board.place(@player_rubber_duckie, input.split)
         else
@@ -159,7 +159,7 @@ class Game
 
     def player_turn
         puts "\nEnter the coordinate for ye cannonball: \n"
-        input = gets.chomp.to_s
+        input = gets.chomp.upcase
         if @computer_board.cells[input].fired_upon?
             puts "Adjust your eyepatch!!\n" +
             "You already shot there, scallyway!"
