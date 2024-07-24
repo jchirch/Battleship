@@ -19,13 +19,14 @@ class Game
         boards_render
         game_play
         winner
-        welcome
+        welcome 
+        play_or_quit
     end
 
     def welcome
         puts "\n\nWelcome to BATTLESHIP\n" +
         "Enter p to play...if ye dare!!\n" + 
-        "Enter q to retreat like the scoundrel you are.\n"
+        "Enter q to retreat like the scoundrel you are!!!\n"
     end
 
     def play_or_quit
