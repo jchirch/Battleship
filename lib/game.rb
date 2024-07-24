@@ -190,18 +190,21 @@ class Game
         "Ye cowardly swab!", "Ye barnacle-brained scallywag!", "Ye flea-bitten scoundrel!", 
         "I am sick when I do look on thee!",  "More of your conversation would infect my brain.", 
         "The tartness of your face sours ripe grapes.", "Thine face is not worth sunburning.", "Thou cream faced loon", 
-        "Thy sin's not accidental, but a trade."]
+        "Thy sin's not accidental, but a trade.", "Your brain is as dry as the remainder biscuit after voyage.", 
+        "You bilge rat! You rampallian! I'll tickle your catastrophe!"]
         return insults.sample 
     end
 
     def computer_hit_or_miss(computer_input)
         if @player_board.cells[computer_input].ship
-            puts "My shot on #{computer_input} was a hit.\n"
+            puts "My shot on #{computer_input} was a hit.\n" +
+            "Shiver me timbers!"
             if @player_board.cells[computer_input].ship.sunk?
-                puts "I sunk your #{@player_board.cells[computer_input].ship.name}!"
+                puts "I sunk your #{@player_board.cells[computer_input].ship.name}!\n" +
+                "#{insults}"
             end
         else
-            puts "My shot on #{computer_input} was a miss.\n"
+            puts "My shot on #{computer_input} was a miss. Drat!\n"
         end
     end    
 
