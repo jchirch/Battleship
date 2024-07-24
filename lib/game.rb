@@ -26,7 +26,7 @@ class Game
     end
 
     def play_or_quit
-        input = gets.chomp
+        input = gets.chomp.downcase
         
         if input == "p"
             computer_placement
