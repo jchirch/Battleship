@@ -233,4 +233,4 @@ class Game
             ship.sunk?
         end
     end
-end
+end 
