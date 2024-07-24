@@ -24,7 +24,8 @@ class Game
 
     def welcome
         puts "\n\nWelcome to BATTLESHIP\n" +
-        "Enter p to play. Enter q to quit.\n"
+        "Enter p to play...if ye dare!!\n" + 
+        "Enter q to retreat like the scoundrel you are.\n"
     end
 
     def play_or_quit
@@ -35,7 +36,7 @@ class Game
         elsif input == "q"
             exit
         else
-            puts "Invalid input, enter 'p' or 'q'"
+            puts "Yarrr! I SAID, ENTER 'p' or 'q'!!!!"
             play_or_quit
         end
     end
@@ -79,7 +80,7 @@ class Game
    
     def game_prompt
         puts "\nAhoy Scallywag! I have laid out me fleet on the grid.\n\n" +
-        "Ye now need to lay out yer 3 ships.\n\n" +
+        "Ye now need to lay out yer three ships.\n\n" +
         "The Cruiser be three units long, the Submarine be two units long,\n" +
         "and the rubber duckie be only one unit.\n" +
         "\n" 
@@ -147,9 +148,11 @@ class Game
 
     def winner
         if all_ships_sunk?(@player_board)
-            puts "\nI won!!"
+            puts "\nI sent ye to Davy Jones' Locker!!\n" +
+            "Better you stick with finger paints!"
         else
-            puts "\nYou won :( "
+            puts "\nYou won...Ye were lucky.\n" +
+            "Until next time, sailor!"
         end
     end
 
@@ -158,26 +161,37 @@ class Game
         input = gets.chomp.to_s
         if @computer_board.cells[input].fired_upon?
             puts "Adjust your eyepatch!!\n" +
-            "You already shot there scallyway!"
+            "You already shot there, scallyway!"
             player
         elsif @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon?
             @computer_board.cells[input].fire_upon
             player_hit_or_miss(input)
         else
-            "\nPlease enter a valid coordinate \n"
+            "\nWrong ocean! Enter a valid coordinate!! \n"
             player_turn
         end
     end
 
     def player_hit_or_miss(input)
         if @computer_board.cells[input].ship
-            puts "\nYour shot on #{input} was a hit."
+            puts "\nYour shot on #{input} struck true.\n"
+
             if @computer_board.cells[input].ship.sunk?
-                puts "You sunk my #{@computer_board.cells[input].ship.name}!"
+                puts "Ye scurvy dog!!! You sunk my #{@computer_board.cells[input].ship.name}!"
             end
         else
-            puts "\nYour shot on #{input} was a miss."
+            puts "\nYour shot on #{input} was a miss.\n" +
+            "#{insults}\n"
         end
+    end
+
+    def insults
+        insults = ["Ye flea-bitten scoundrel!", "Arr, ye lily-livered landlubber!", "Ye mangy sea bass!",
+        "Ye cowardly swab!", "Ye barnacle-brained scallywag!", "Ye flea-bitten scoundrel!", 
+        "I am sick when I do look on thee!",  "More of your conversation would infect my brain.", 
+        "The tartness of your face sours ripe grapes.", "Thine face is not worth sunburning.", "Thou cream faced loon", 
+        "Thy sin's not accidental, but a trade."]
+        return insults.sample 
     end
 
     def computer_hit_or_miss(computer_input)
