@@ -146,7 +146,11 @@ class Game
     def player_turn
         puts "\nEnter the coordinate for ye cannonball: \n"
         input = gets.chomp.to_s
-        if @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon?
+        if @computer_board.cells[input].fired_upon?
+            puts "Adjust your eyepatch!!\n" +
+            "You already shot there scallyway!"
+            player_turn
+        elsif @computer_board.valid_coordinate?(input) && !@computer_board.cells[input].fired_upon?
             @computer_board.cells[input].fire_upon
             player_hit_or_miss(input)
         else
