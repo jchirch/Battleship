@@ -160,7 +160,7 @@ class Game
     def player_turn
         puts "\nEnter the coordinate for ye cannonball: \n"
         input = gets.chomp.upcase
-        if @computer_board.cells[input].fired_upon?
+        if @computer_board.valid_coordinate?(input) && @computer_board.cells[input].fired_upon?
             puts "Adjust your eyepatch!!\n" +
             "You already shot there, scallyway!"
             player_turn
@@ -168,7 +168,7 @@ class Game
             @computer_board.cells[input].fire_upon
             player_hit_or_miss(input)
         else
-            "\nWrong ocean! Enter a valid coordinate!! \n"
+            puts "\nWrong ocean! Enter a valid coordinate!! \n"
             player_turn
         end
     end
@@ -233,4 +233,4 @@ class Game
             ship.sunk?
         end
     end
-end
+end 
